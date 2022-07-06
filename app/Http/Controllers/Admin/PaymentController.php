@@ -21,7 +21,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $data = PaymentConfirmation::with(['Siswa','Product'])->where('status_payment','MENUNGGU')->get();
+        $data = PaymentConfirmation::where('confirm','MENUNGGU')->with(['Siswa','Product'])->get();
         return view('pages.admin.payment.confirm-payment', ['data'=>$data]);
     }
     public function historyPayment()
@@ -42,22 +42,7 @@ class PaymentController extends Controller
         return view('pages.admin.payment.createKonfirmasiPembayaran', ['data' => $data]);
     }
 
-    //post confirm payment from admin
-
-    public function postConfirmPayment(Request $request) {
-        $data = $request->all();
-        // $siswa = Siswa::where('id',$request->siswa_id)->get();
-        $siswa = Siswa::findOrFail($request->siswa_id);
-        $data['product_id'] = $siswa->product_id;
-        // $product = Product::where('id', $siswa->product_id)->get();
-        $product = Product::findOrFail( $siswa->product_id);
-        $data['price'] = $product->price;
-        $data['photo_payment'] = $request->file('photo_payment')->store('assets/photo_payment','public');
-
-        PaymentConfirmation::create($data);
-        return redirect()->route('payment.index')->with('status', 'berhasil menambah confirmasi pembayaran, selanjutnya silahkan konfirmasi pembayaran');
-        
-    }
+    
 
     /**
      * Show the form for creating a new resource.

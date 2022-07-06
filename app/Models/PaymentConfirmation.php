@@ -12,6 +12,7 @@ class PaymentConfirmation extends Model
     use HasFactory;
     protected $fillable = [
         'siswa_id',
+        'user_id',
         'product_id',
         'name_of_no_rek',
         'price',

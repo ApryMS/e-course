@@ -25,7 +25,7 @@
                                             <th><span class="text-muted">Nama Siswa</span></th>
                                             <th><span class="text-muted">Nomer WA</span></th>
                                             <th><span class="text-muted">Sekolah</span></th>
-                                            <th><span class="text-muted">Status Siswa</span></th>
+                                            <th><span class="text-muted">Status Payment</span></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -56,7 +56,7 @@
                                 </td>
                                 <td class="flex">
                                     <div class="item-except text-muted text-sm h-1x">
-                                        {{ $row->Siswa->siswa_status }}
+                                        {{ $row->status_payment }}
                                     </div>
                                 </td>
                                 

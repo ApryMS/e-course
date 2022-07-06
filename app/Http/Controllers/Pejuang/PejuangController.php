@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Pejuang;
 
 use App\Http\Controllers\Controller;
+use App\Models\PaymentConfirmation;
+use App\Models\Product;
 use App\Models\User;
 use App\Models\User\Siswa;
 use Illuminate\Http\Request;
@@ -109,6 +111,31 @@ class PejuangController extends Controller
         $user->update($item);
         return redirect()->back()->with('status', 'Data diri berhasil di ubah');
 
+    }
+
+    public function listConfirmasiPembayaran(){
+        $data = PaymentConfirmation::where('user_id', Auth::user()->id)->get();
+        return view('pages.list-pembayaran-siswa',['data'=> $data]);
+    }
+
+    public function confirmasiPembayaran(){
+        $data = Siswa::where('user_id', Auth::user()->id)->with(['PaymentMethod', 'User', 'Product'] )->get();
+        return view('pages.createKonfirmasiPembayaran', ['data' => $data]);
+    }
+    public function postPembayaranSiswa(Request $request){
+        $data = $request->all();
+        // $siswa = Siswa::where('id',$request->siswa_id)->get();
+        $siswa = Siswa::findOrFail($request->siswa_id);
+        $data['user_id'] = $siswa->user_id;
+        $data['product_id'] = $siswa->product_id;
+        // $product = Product::where('id', $siswa->product_id)->get();
+        $product = Product::findOrFail( $siswa->product_id);
+        $data['price'] = $product->price;
+        $data['photo_payment'] = $request->file('photo_payment')->store('assets/photo_payment','public');
+
+        PaymentConfirmation::create($data);
+        return redirect()->route('list-confirmasi-pembayaran')->with('status', 'berhasil menambah confirmasi pembayaran, selanjutnya tunggu konfirmasi admin jika status pembayaran sudah lunas');
+        
     }
 
 }

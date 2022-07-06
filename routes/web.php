@@ -55,7 +55,7 @@ Route::post('non-active-payment-metode/{id}', [PaymentController::class, 'nonSta
 
 
 //mentor
-Route::resource('siswa', MentorSiswaController::class);
+Route::resource('list-siswa', MentorSiswaController::class);
 Route::post('/getregency', [MentorSiswaController::class, 'getRegency'])->name('getregency');
 Route::get('/daftar-pejuang/{id}', [MentorSiswaController::class, 'daftarPejuang'])->name('daftar-pejuang');
 Route::post('/post-pejuang/{id}', [MentorSiswaController::class, 'postPejuang'])->name('post-pejuang');
@@ -67,6 +67,9 @@ Route::resource('/pejuang', PejuangController::class);
 Route::get('/history-payment-fee', [MentorSiswaController::class, 'historyPaymentFee'])->name('history-payment-fee');
 Route::get('/profile', [PejuangController::class, 'profile'])->name('profile');
 Route::post('/edit-profile/{id}', [PejuangController::class, 'editProfile'])->name('edit-profile');
+Route::get('/list-confirmasi-pembayaran', [PejuangController::class, 'listConfirmasiPembayaran'])->name('list-confirmasi-pembayaran');
+Route::get('/confirmasi-pembayaran', [PejuangController::class, 'confirmasiPembayaran'])->name('confirmasi-pembayaran');
+Route::post('/post-create-payment', [PejuangController::class, 'postPembayaranSiswa'])->name('post-create-payment');
 
 
 

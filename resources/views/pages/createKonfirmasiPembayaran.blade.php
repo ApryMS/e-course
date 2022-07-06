@@ -27,17 +27,25 @@
                                             <form action="{{ route('post-create-payment') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-4">
                                                         <label class="text-muted">Nama Pemilik Bank</label>
                                                         <input type="text" id="name_of_no_rek" name="name_of_no_rek" class="form-control">
                                                     </div>
-                                                    <div class="form-group col-md-6">
+                                                    <div class="form-group col-md-4">
                                                         <label for="siswa_id" id="siswa_id" class="text-muted d-block">Nama Siswa</label>
                                                         <select name="siswa_id" class="custom-select">
                                                             <option selected>Pilih...</option>
                                                             @foreach ($data as $row )
                                                             <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                             @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="status_payment" id="status_payment" class="text-muted d-block">Status Pembayaran</label>
+                                                        <select name="status_payment" class="custom-select">
+                                                            <option selected>Pilih...</option>
+                                                            <option value="LUNAS">LUNAS</option>
+                                                            <option value="CICIL">CICIL</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-12">

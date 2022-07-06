@@ -82,17 +82,12 @@
                     </li>
                     @elseif (Auth::user()->role == "MENTOR")
                     <li>
-                        <a href="{{ route('siswa.index') }}">
+                        <a href="{{ route('list-siswa.index') }}">
                             <span class="nav-icon text-success"><i data-feather='user'></i></span>
                             <span class="nav-text">Siswaku</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('history-payment-fee') }}">
-                            <span class="nav-icon text-success"><i data-feather='user'></i></span>
-                            <span class="nav-text">Konfirmasi Pembayaran</span>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="app.user.html">
                             <span class="nav-icon text-success"><i data-feather='user'></i></span>
@@ -100,16 +95,29 @@
                         </a>
                     </li>
                     <li>
-                        <a href="app.user.html">
+                        <a href="{{ route('list-confirmasi-pembayaran') }}">
+                            <span class="nav-icon text-success"><i data-feather='user'></i></span>
+                            <span class="nav-text">Konfirmasi Pembayaran</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('history-payment-fee') }}">
                             <span class="nav-icon text-success"><i data-feather='user'></i></span>
                             <span class="nav-text">Hisoty Pembayaran Fee</span>
                         </a>
                     </li>
+                    
                     @else
                     <li>
                         <a href="{{ route('pejuang.index') }}">
                             <span class="nav-icon text-success"><i data-feather='user'></i></span>
                             <span class="nav-text">Siswa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('list-confirmasi-pembayaran') }}">
+                            <span class="nav-icon text-success"><i data-feather='user'></i></span>
+                            <span class="nav-text">Konfirmasi Pembayaran</span>
                         </a>
                     </li>
                     <li>
