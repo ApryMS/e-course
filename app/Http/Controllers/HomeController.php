@@ -46,7 +46,7 @@ class HomeController extends Controller
                 'bab_video' => $bab_video,
             ]);
         } elseif (Auth::user()->role == 'MENTOR') {
-            $total_fee = TotalFee::findOrFail(Auth::user()->id);
+            $total_fee = TotalFee::where('user_id', Auth::user()->id)->first();
             $siswa = Siswa::where('user_id', Auth::user()->id)->get()->count();
             $pejuang = User:: where('role', 'PEJUANG')->where('user_id', Auth::user()->id)->get()->count();
             $linkPendaftaranPejuang = Auth::user()->id ;
@@ -57,9 +57,9 @@ class HomeController extends Controller
                 'total_fee' => $total_fee['total_fee'],
             ]);
         }else{
-            $total_fee = TotalFee::findOrFail(Auth::user()->id);
+            $total_fee = TotalFee::where('user_id', Auth::user()->id)->first();
             $siswa = Siswa::where('user_id', Auth::user()->id)->get()->count();
-            return view('pages.dashboard', ['total_fee' => $total_fee , 'siswa' => $siswa]);
+            return view('pages.dashboard', ['total_fee' => $total_fee['total_fee'] , 'siswa' => $siswa]);
         }
     }
 }

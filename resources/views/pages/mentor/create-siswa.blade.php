@@ -34,7 +34,7 @@
                                             <strong>Data Siswa</strong>
                                         </div>
                                         <div class="card-body">
-                                            <form action="{{ route('mentor-siswa.store') }}" method="POST" enctype="multipart/form-data">
+                                            <form action="{{ route('siswa.store') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">

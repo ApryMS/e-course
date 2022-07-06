@@ -16,7 +16,7 @@
                             </div>
                             <div class="flex"></div>
                             <div>
-                                <a href="{{ route('mentor-siswa.create') }}" class="btn btn-md text-muted">
+                                <a href="{{ route('siswa.create') }}" class="btn btn-md text-muted">
                                     <span class="d-none d-sm-inline mx-1">Tambah Siswa</span>
                                     <i data-feather="arrow-right"></i>
                                 </a>

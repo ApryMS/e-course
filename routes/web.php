@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\Payment;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\MentorController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BabVideoController;
 use App\Http\Controllers\Mentor\SiswaController as MentorSiswaController;
 use App\Http\Controllers\Pejuang\PejuangController;
@@ -54,11 +55,18 @@ Route::post('non-active-payment-metode/{id}', [PaymentController::class, 'nonSta
 
 
 //mentor
-Route::resource('mentor-siswa', MentorSiswaController::class);
+Route::resource('siswa', MentorSiswaController::class);
 Route::post('/getregency', [MentorSiswaController::class, 'getRegency'])->name('getregency');
 Route::get('/daftar-pejuang/{id}', [MentorSiswaController::class, 'daftarPejuang'])->name('daftar-pejuang');
 Route::post('/post-pejuang/{id}', [MentorSiswaController::class, 'postPejuang'])->name('post-pejuang');
 
 //pejuang
 Route::resource('/pejuang', PejuangController::class);
+
+//MENTOR & PEJUANG
+Route::get('/history-payment-fee', [MentorSiswaController::class, 'historyPaymentFee'])->name('history-payment-fee');
+Route::get('/profile', [PejuangController::class, 'profile'])->name('profile');
+Route::post('/edit-profile/{id}', [PejuangController::class, 'editProfile'])->name('edit-profile');
+
+
 

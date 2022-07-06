@@ -82,13 +82,13 @@
                     </li>
                     @elseif (Auth::user()->role == "MENTOR")
                     <li>
-                        <a href="{{ route('mentor-siswa.index') }}">
+                        <a href="{{ route('siswa.index') }}">
                             <span class="nav-icon text-success"><i data-feather='user'></i></span>
                             <span class="nav-text">Siswaku</span>
                         </a>
                     </li>
                     <li>
-                        <a href="app.user.html">
+                        <a href="{{ route('history-payment-fee') }}">
                             <span class="nav-icon text-success"><i data-feather='user'></i></span>
                             <span class="nav-text">Konfirmasi Pembayaran</span>
                         </a>
@@ -113,14 +113,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="app.user.html">
+                        <a href="{{ route('history-payment-fee') }}">
                             <span class="nav-icon text-success"><i data-feather='dollar-sign'></i></span>
                             <span class="nav-text">Hisoty Pembayaran Fee</span>
                         </a>
                     </li>
                     @endif
                     <li>
-                        <a href="app.user.html">
+                        <a href="{{ route('profile') }}">
                             <span class="nav-icon text-success"><i data-feather='user'></i></span>
                             <span class="nav-text">Profil</span>
                         </a>

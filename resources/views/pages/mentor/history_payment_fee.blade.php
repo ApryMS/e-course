@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Siswa
+    Pembayaran Fee
 @endsection
 @section('content')
 <div id="content" class="flex ">
@@ -11,16 +11,10 @@
                     <div class="page-hero page-container " id="page-hero">
                         <div class="padding d-flex pt-0">
                             <div class="page-title">
-                                <h2 class="text-md text-highlight">Siswa</h2>
-                                <small class="text-muted">Daftar list seluruh siswa</small>
+                                <h2 class="text-md text-highlight">History Pembayaran Fee</h2>
+                                <small class="text-muted">List pembayaran fee mu</small>
                             </div>
                             <div class="flex"></div>
-                            <div>
-                                <a href="{{ route('siswa.create') }}" class="btn btn-md text-muted">
-                                    <span class="d-none d-sm-inline mx-1">Tambah Siswa</span>
-                                    <i data-feather="arrow-right"></i>
-                                </a>
-                            </div>
                         </div>
                     </div>
                     <div class="page-content page-container" id="page-content">
@@ -30,10 +24,10 @@
                                     <thead>
                                         <tr>
                                             <th><span class="text-muted">No</span></th>
-                                            <th><span class="text-muted">Nama Lengkap</span></th>
-                                            <th><span class="text-muted">Email</span></th>
-                                            <th><span class="text-muted">Status Siswa</span></th>
-                                            <th><span class="text-muted">Status Payment</span></th>
+                                            <th><span class="text-muted">Tanggal</span></th>
+                                            <th><span class="text-muted">Jumlah Siswa</span></th>
+                                            <th><span class="text-muted">Total Fee</span></th>
+                                            <th><span class="text-muted">Photo</span></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -48,23 +42,22 @@
                                         </td>
                                         <td>
                                             <span class="item-amount text-sm ">
-                                                {{ $row->name }}
+                                                {{ $row->updated_at }}
                                             </span>
                                         </td>
                                         <td>
                                             <span class="item-amount text-sm ">
-                                                {{ $row->email }}
+                                                {{ $row->total_siswa }}
                                             </span>
                                         </td>
                                         <td class="flex">
                                             <div class="item-except text-muted text-sm h-1x">
-                                                {{ $row->siswa_status }}
+                                                {{ $row->total_transfer }}
                                             </div>
                                         </td>
                                         <td class="flex">
-                                            <div class="item-except text-muted text-sm h-1x">
-                                                {{ $row->payment_status }}
-                                            </div>
+                                            <img src="{{ Storage::url($row->photo) }}" width="100px" style="max-height: 400px;"
+                                            alt=""> 
                                         </td>
                                         
                                         <td>
@@ -75,9 +68,6 @@
                                                 <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
                                                     <a class="dropdown-item" href="">
                                                         Lihat Detail
-                                                    </a>
-                                                    <a href="" class="dropdown-item edit">
-                                                        Edit
                                                     </a>
                                                 </div>
                                             </div>

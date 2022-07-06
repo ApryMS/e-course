@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- style -->
         <!-- build:css ../dashboard/css/site.min.css -->
+        <link rel="shortcut icon" href="{{ asset('basik/assets/img/afterschoolindonesia.png') }}" type="image/x-icon">
         <link rel="stylesheet" href="{{ asset('basik/assets/css/bootstrap.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('basik/assets/css/theme.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('basik/assets/css/style.css') }}" type="text/css" />

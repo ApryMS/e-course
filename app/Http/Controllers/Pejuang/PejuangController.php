@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pejuang;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\User\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -85,4 +86,29 @@ class PejuangController extends Controller
     {
         //
     }
+    public function profile(){
+        $data = User::findOrFail(Auth::user()->id);
+        return view('pages.profile', ['user' => $data]);
+    }
+
+    public function editProfile(Request $request ,$id) {
+        $user = User::findOrFail($id);
+        $item = $request->all();
+        if($request->password){
+            $item['password'] = bcrypt($request->password);
+        }else{
+            unset($item['password']);
+        }
+
+        if($request->email){
+            $item['email'] = $request->email ;
+        }else{
+            unset($item['email']);
+        }
+
+        $user->update($item);
+        return redirect()->back()->with('status', 'Data diri berhasil di ubah');
+
+    }
+
 }

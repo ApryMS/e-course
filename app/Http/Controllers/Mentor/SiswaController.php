@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mentor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SiswaRequest;
 use App\Models\Admin\TotalFee;
+use App\Models\HistoryTransaksiFee;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Province;
@@ -57,7 +58,7 @@ class SiswaController extends Controller
         $data['regency'] = $regency->name;
         $data['password'] = Hash::make($data['password']);
         Siswa::create($data);
-        return redirect()->route('mentor-siswa.index')->with('status', 'berhasil membuat siswa, silahkan konfirmasi pembayaran');
+        return redirect()->route('siswa.index')->with('status', 'berhasil membuat siswa, silahkan konfirmasi pembayaran');
     }
 
     /**
@@ -131,6 +132,11 @@ class SiswaController extends Controller
 
         return redirect()->route('login')->with('status', 'Berhasi mendaftar sebagai pejuang. Selamat Berjuang...');
 
+    }
+
+    public function historyPaymentFee(){
+        $data = HistoryTransaksiFee::where('user_id', Auth::user()->id);
+        return view('pages.mentor.history_payment_fee',['data' => $data]);
     }
 
 }
