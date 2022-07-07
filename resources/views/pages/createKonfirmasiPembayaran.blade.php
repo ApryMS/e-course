@@ -49,7 +49,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label class=text-muted">Catatan</label>
+                                                        <label class="text-muted">Catatan</label>
                                                         <textarea id="event-desc" class="form-control" rows="12" id="note" required name="note"></textarea>
                                                     </div>
                                                     <div class="form-group col-md-12 custom-file">

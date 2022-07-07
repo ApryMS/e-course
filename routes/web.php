@@ -70,6 +70,8 @@ Route::post('/edit-profile/{id}', [PejuangController::class, 'editProfile'])->na
 Route::get('/list-confirmasi-pembayaran', [PejuangController::class, 'listConfirmasiPembayaran'])->name('list-confirmasi-pembayaran');
 Route::get('/confirmasi-pembayaran', [PejuangController::class, 'confirmasiPembayaran'])->name('confirmasi-pembayaran');
 Route::post('/post-create-payment', [PejuangController::class, 'postPembayaranSiswa'])->name('post-create-payment');
+Route::get('/detail-confirmasi-pembayaran/{id}', [PejuangController::class, 'detailKonfirmasiPembayaran'])->name('detail-confirmasi-pembayaran');
+Route::get('/detail-siswa/{id}', [PejuangController::class, 'detailSiswa'])->name('detail-siswa');
 
 
 

@@ -21,6 +21,10 @@ class PaymentConfirmation extends Model
         'status_payment',
     ];
 
+    public function User(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
+
     public function Siswa(): BelongsTo {
         return $this->belongsTo(Siswa::class);
     }

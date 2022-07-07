@@ -72,7 +72,7 @@
                                                     <i data-feather="more-vertical"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                                    <a class="dropdown-item" href="">
+                                                    <a class="dropdown-item" href="{{ route('detail-confirmasi-pembayaran', $row->id) }}">
                                                         Lihat Detail
                                                     </a>
                                                     <a href="" class="dropdown-item edit">

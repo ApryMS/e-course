@@ -30,14 +30,9 @@ class Siswa extends Model
         'siswa_status',
     ];
 
-    public function Mentor(): BelongsTo {
-        return $this->belongsTo(Mentor::class);
-    }
+    
     public function User(): BelongsTo {
         return $this->belongsTo(User::class);
-    }
-    public function Pejuang(): BelongsTo {
-        return $this->belongsTo(Pejuang::class);
     }
     public function Product(): BelongsTo {
         return $this->belongsTo(Product::class);

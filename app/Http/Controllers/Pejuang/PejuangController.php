@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pejuang;
 
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentConfirmation;
 use App\Models\Product;
@@ -119,7 +120,7 @@ class PejuangController extends Controller
     }
 
     public function confirmasiPembayaran(){
-        $data = Siswa::where('user_id', Auth::user()->id)->with(['PaymentMethod', 'User', 'Product'] )->get();
+        $data = Siswa::where('user_id', Auth::user()->id)->where('payment_status' , 'MENUNGGU')->with(['PaymentMethod', 'User', 'Product'] )->get();
         return view('pages.createKonfirmasiPembayaran', ['data' => $data]);
     }
     public function postPembayaranSiswa(Request $request){
@@ -133,9 +134,23 @@ class PejuangController extends Controller
         $data['price'] = $product->price;
         $data['photo_payment'] = $request->file('photo_payment')->store('assets/photo_payment','public');
 
-        PaymentConfirmation::create($data);
+        $payment = PaymentConfirmation::create($data);
+        $siswa = Siswa::findOrFail($request->siswa_id);
+        $siswa->update(['payment_status'=>$payment->status_payment]);
         return redirect()->route('list-confirmasi-pembayaran')->with('status', 'berhasil menambah confirmasi pembayaran, selanjutnya tunggu konfirmasi admin jika status pembayaran sudah lunas');
         
+    }
+
+    public function detailKonfirmasiPembayaran($id){
+
+        $data = PaymentConfirmation::with(['User', 'Siswa', 'Product'])->findOrFail($id);
+        return view('pages.detailKonfirmasiPembayaran', ['data' => $data]);
+
+    }
+
+    public function detailSiswa($id) {
+        $data = Siswa::with(['User', 'Product', 'PaymentMethod'])->findOrFail($id);
+        return view('pages.detail-siswa',['data' => $data]);
     }
 
 }
